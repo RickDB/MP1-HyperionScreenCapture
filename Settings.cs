@@ -10,6 +10,8 @@ namespace MP1_HyperionScreenCapture
 
     // Generic
     public static bool DisableOnStart;
+    public static bool OnlyEnableWithMadVr;
+
 
     // Remote settings
     public static int RemoteToggleKey;
@@ -26,9 +28,10 @@ namespace MP1_HyperionScreenCapture
           new MediaPortal.Profile.Settings(
             MediaPortal.Configuration.Config.GetFile(MediaPortal.Configuration.Config.Dir.Config, "MediaPortal.xml")))
       {
-        DisableOnStart = reader.GetValueAsBool("AudioSwitcher", "disableOnStart", true);
-        RemoteToggleKey = reader.GetValueAsInt("AudioSwitcher", "remoteToggleKey", 0);
-        ApiPort = reader.GetValueAsInt("AudioSwitcher", "apiPort", 29445);
+        DisableOnStart = reader.GetValueAsBool("HyperionScreenCapture", "disableOnStart", true);
+        OnlyEnableWithMadVr = reader.GetValueAsBool("HyperionScreenCapture", "onlyEnableWithMadVr", false);
+        RemoteToggleKey = reader.GetValueAsInt("HyperionScreenCapture", "remoteToggleKey", 0);
+        ApiPort = reader.GetValueAsInt("HyperionScreenCapture", "apiPort", 29445);
       }
     }
 
@@ -40,9 +43,10 @@ namespace MP1_HyperionScreenCapture
           new MediaPortal.Profile.Settings(
             MediaPortal.Configuration.Config.GetFile(MediaPortal.Configuration.Config.Dir.Config, "MediaPortal.xml")))
       {
-        reader.SetValueAsBool("AudioSwitcher", "disableOnStart", DisableOnStart);
-        reader.SetValue("AudioSwitcher", "remoteToggleKey", RemoteToggleKey);
-        reader.SetValue("AudioSwitcher", "apiPort", ApiPort);
+        reader.SetValueAsBool("HyperionScreenCapture", "disableOnStart", DisableOnStart);
+        reader.SetValueAsBool("HyperionScreenCapture", "onlyEnableWithMadVr", OnlyEnableWithMadVr);
+        reader.SetValue("HyperionScreenCapture", "remoteToggleKey", RemoteToggleKey);
+        reader.SetValue("HyperionScreenCapture", "apiPort", ApiPort);
       }
     }
 
@@ -53,8 +57,8 @@ namespace MP1_HyperionScreenCapture
           new MediaPortal.Profile.Settings(
             MediaPortal.Configuration.Config.GetFile(MediaPortal.Configuration.Config.Dir.Config, "MediaPortal.xml")))
       {
-        value = reader.GetValueAsString("AudioSwitcher", setting, "");
-        reader.SetValue("AudioSwitcher", setting, value);
+        value = reader.GetValueAsString("HyperionScreenCapture", setting, "");
+        reader.SetValue("HyperionScreenCapture", setting, value);
       }
     }
 
@@ -65,7 +69,7 @@ namespace MP1_HyperionScreenCapture
           new MediaPortal.Profile.Settings(
             MediaPortal.Configuration.Config.GetFile(MediaPortal.Configuration.Config.Dir.Config, "MediaPortal.xml")))
       {
-        reader.SetValue("AudioSwitcher", setting, value);
+        reader.SetValue("HyperionScreenCapture", setting, value);
       }
     }
   }

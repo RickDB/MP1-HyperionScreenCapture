@@ -27,6 +27,7 @@ namespace MP1_HyperionScreenCapture
       tbApiPort.Text = Settings.ApiPort.ToString();
       cbRemoteToggle.SelectedIndex = Settings.RemoteToggleKey;
       chkDisableOnStart.Checked = Settings.DisableOnStart;
+      chkOnlyEnableWithMadVr.Checked = Settings.OnlyEnableWithMadVr;
     }
 
     private void SaveSettings()
@@ -38,6 +39,7 @@ namespace MP1_HyperionScreenCapture
 
       Settings.RemoteToggleKey = cbRemoteToggle.SelectedIndex;
       Settings.DisableOnStart = chkDisableOnStart.Checked;
+      Settings.OnlyEnableWithMadVr = chkOnlyEnableWithMadVr.Checked;
       Settings.SaveSettings();
     }
 

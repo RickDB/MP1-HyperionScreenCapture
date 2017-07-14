@@ -54,7 +54,7 @@ namespace MP1_HyperionScreenCapture
     // Returns the description of the plugin is shown in the plugin menu
     public string PluginName()
     {
-      return "MP-HyperionScreenCapture";
+      return "HyperionScreenCapture";
     }
 
     public string Description()
@@ -125,7 +125,14 @@ namespace MP1_HyperionScreenCapture
     /// <param name="filename">Media filename</param>
     private void g_Player_PlayBackStarted(g_Player.MediaType type, string filename)
     {
-      ToggleHyperionScreenCapture(true);
+      if (Settings.OnlyEnableWithMadVr && GUIGraphicsContext.VideoRenderer == GUIGraphicsContext.VideoRendererType.madVR)
+      {
+        ToggleHyperionScreenCapture(true);
+      }
+      else if (!Settings.OnlyEnableWithMadVr)
+      {
+        ToggleHyperionScreenCapture(true);
+      }
     }
 
     /// <summary>
@@ -135,7 +142,14 @@ namespace MP1_HyperionScreenCapture
     /// <param name="filename">Media filename.</param>
     private void g_Player_PlayBackEnded(g_Player.MediaType type, string filename)
     {
-      ToggleHyperionScreenCapture(false);
+      if (Settings.OnlyEnableWithMadVr && GUIGraphicsContext.VideoRenderer == GUIGraphicsContext.VideoRendererType.madVR)
+      {
+        ToggleHyperionScreenCapture(false);
+      }
+      else if (!Settings.OnlyEnableWithMadVr)
+      {
+        ToggleHyperionScreenCapture(false);
+      }
     }
 
     /// <summary>

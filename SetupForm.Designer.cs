@@ -35,6 +35,7 @@
       this.tbApiPort = new System.Windows.Forms.TextBox();
       this.cbRemoteToggle = new System.Windows.Forms.ComboBox();
       this.btnSaveSettings = new System.Windows.Forms.Button();
+      this.chkOnlyEnableWithMadVr = new System.Windows.Forms.CheckBox();
       this.SuspendLayout();
       // 
       // lblRemoteToggle
@@ -93,7 +94,7 @@
       // 
       // btnSaveSettings
       // 
-      this.btnSaveSettings.Location = new System.Drawing.Point(15, 110);
+      this.btnSaveSettings.Location = new System.Drawing.Point(15, 160);
       this.btnSaveSettings.Name = "btnSaveSettings";
       this.btnSaveSettings.Size = new System.Drawing.Size(333, 32);
       this.btnSaveSettings.TabIndex = 6;
@@ -101,11 +102,22 @@
       this.btnSaveSettings.UseVisualStyleBackColor = true;
       this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
       // 
+      // chkOnlyEnableWithMadVr
+      // 
+      this.chkOnlyEnableWithMadVr.AutoSize = true;
+      this.chkOnlyEnableWithMadVr.Location = new System.Drawing.Point(15, 104);
+      this.chkOnlyEnableWithMadVr.Name = "chkOnlyEnableWithMadVr";
+      this.chkOnlyEnableWithMadVr.Size = new System.Drawing.Size(270, 17);
+      this.chkOnlyEnableWithMadVr.TabIndex = 7;
+      this.chkOnlyEnableWithMadVr.Text = "Only use when madVR is active (not recommended)";
+      this.chkOnlyEnableWithMadVr.UseVisualStyleBackColor = true;
+      // 
       // SetupForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(360, 146);
+      this.ClientSize = new System.Drawing.Size(360, 204);
+      this.Controls.Add(this.chkOnlyEnableWithMadVr);
       this.Controls.Add(this.btnSaveSettings);
       this.Controls.Add(this.cbRemoteToggle);
       this.Controls.Add(this.tbApiPort);
@@ -130,5 +142,6 @@
     private System.Windows.Forms.TextBox tbApiPort;
     private System.Windows.Forms.ComboBox cbRemoteToggle;
     private System.Windows.Forms.Button btnSaveSettings;
+    private System.Windows.Forms.CheckBox chkOnlyEnableWithMadVr;
   }
 }
