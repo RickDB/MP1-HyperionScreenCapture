@@ -181,12 +181,12 @@ Click Next to continue or Cancel to exit Setup.</Value>
       <Build>0</Build>
       <Revision>0</Revision>
     </Version>
-    <ExtensionDescription>Easily switch audio devices via context menu using a mapped remote key.</ExtensionDescription>
+    <ExtensionDescription>Controls HyperionScreenCapture application via its API to allow for live capture to Hyperion (ambilight system).</ExtensionDescription>
     <VersionDescription />
     <DevelopmentStatus>Stable</DevelopmentStatus>
     <OnlineLocation />
     <ReleaseDate>2017-07-14T15:08:24</ReleaseDate>
-    <Tags />
+    <Tags>ambilight</Tags>
     <Location>..\Release\[Name]_[Version].mpe1</Location>
     <Params>
       <Items>
