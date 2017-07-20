@@ -97,6 +97,9 @@ namespace MP1_HyperionScreenCapture
       g_Player.PlayBackStopped += g_Player_PlayBackStopped;
       g_Player.PlayBackEnded += g_Player_PlayBackEnded;
 
+      // Button Handler
+      GUIWindowManager.OnNewAction += OnNewAction;
+
       if (Settings.DisableOnStart)
         ToggleHyperionScreenCapture(false);
       else

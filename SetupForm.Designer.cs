@@ -109,6 +109,7 @@
       this.chkOnlyEnableWithMadVr.Name = "chkOnlyEnableWithMadVr";
       this.chkOnlyEnableWithMadVr.Size = new System.Drawing.Size(270, 17);
       this.chkOnlyEnableWithMadVr.TabIndex = 7;
+      this.chkOnlyEnableWithMadVr.Tag = " 1";
       this.chkOnlyEnableWithMadVr.Text = "Only use when madVR is active (not recommended)";
       this.chkOnlyEnableWithMadVr.UseVisualStyleBackColor = true;
       // 
