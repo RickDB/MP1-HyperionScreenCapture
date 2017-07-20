@@ -191,7 +191,7 @@ namespace MP1_HyperionScreenCapture
         if (on)
         {
           requestUrl = $"{ApiBaseUrl}?command=ON";
-          HyperionScreenCaptureEnabled = false;
+          HyperionScreenCaptureEnabled = true;
           Log.Info("HyperScreenCapture - Enabling capture");
         }
         else
