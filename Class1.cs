@@ -177,26 +177,26 @@ namespace MP1_HyperionScreenCapture
           (action.wID == Action.ActionType.ACTION_REMOTE_SUBPAGE_UP && Settings.RemoteToggleKey == 7))
       {
         if (HyperionScreenCaptureEnabled)
-          ToggleHyperionScreenCapture(false);
+          ToggleHyperionScreenCapture(false, true);
         else
-          ToggleHyperionScreenCapture(true);
+          ToggleHyperionScreenCapture(true, true);
       }
     }
 
-    private void ToggleHyperionScreenCapture(bool on)
+    private void ToggleHyperionScreenCapture(bool on, bool force = false)
     {
       try
       {
         string requestUrl;
         if (on)
         {
-          requestUrl = $"{ApiBaseUrl}?command=ON";
+          requestUrl = $"{ApiBaseUrl}?command=ON&force={force}";
           HyperionScreenCaptureEnabled = true;
           Log.Info("HyperScreenCapture - Enabling capture");
         }
         else
         {
-          requestUrl = $"{ApiBaseUrl}?command=OFF";
+          requestUrl = $"{ApiBaseUrl}?command=OFF&force={force}";
           HyperionScreenCaptureEnabled = false;
           Log.Info("HyperScreenCapture - Disabling capture");
         }
