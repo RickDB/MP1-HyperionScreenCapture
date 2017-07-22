@@ -178,14 +178,14 @@ Click Next to continue or Cancel to exit Setup.</Value>
     <Version>
       <Major>1</Major>
       <Minor>0</Minor>
-      <Build>0</Build>
-      <Revision>6</Revision>
+      <Build>1</Build>
+      <Revision>0</Revision>
     </Version>
     <ExtensionDescription>Controls HyperionScreenCapture application via its API to allow for live capture to Hyperion (ambilight system).</ExtensionDescription>
     <VersionDescription />
     <DevelopmentStatus>Stable</DevelopmentStatus>
     <OnlineLocation />
-    <ReleaseDate>2017-07-21T15:08:24</ReleaseDate>
+    <ReleaseDate>2017-07-22T15:08:24</ReleaseDate>
     <Tags>ambilight</Tags>
     <Location>..\Release\[Name]_[Version].mpe1</Location>
     <Params>
@@ -233,7 +233,7 @@ Click Next to continue or Cancel to exit Setup.</Value>
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>..\Resources\logo.png</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{1e41a942-ff29-4a73-8034-6d6fc91e3893}-logo.png</ZipFileName>
+        <ZipFileName>Installer{CopyFile}\{a83494d0-12e1-42db-a8ec-13ec2d9bf716}-logo.png</ZipFileName>
         <DestinationFilename />
       </FileItem>
     </Items>
