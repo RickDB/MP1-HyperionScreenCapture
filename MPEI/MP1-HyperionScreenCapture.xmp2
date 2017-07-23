@@ -178,7 +178,7 @@ Click Next to continue or Cancel to exit Setup.</Value>
     <Version>
       <Major>1</Major>
       <Minor>0</Minor>
-      <Build>1</Build>
+      <Build>2</Build>
       <Revision>0</Revision>
     </Version>
     <ExtensionDescription>Controls HyperionScreenCapture application via its API to allow for live capture to Hyperion (ambilight system).</ExtensionDescription>

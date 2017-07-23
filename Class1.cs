@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaPortal.Common.Utils.Logger;
 using MediaPortal.Configuration;
 using MediaPortal.GUI.Library;
 using MediaPortal.Player;
@@ -87,7 +84,7 @@ namespace MP1_HyperionScreenCapture
 
         public override bool Init()
         {
-            Log.Info("HyperScreenCapture - Starting...");
+            Logger("HyperionScreenCapture - Starting...", CommonLogLevel.Information);
 
             Settings.LoadSettings();
 
@@ -104,7 +101,7 @@ namespace MP1_HyperionScreenCapture
             else
                 ToggleHyperionScreenCapture(true, true);
 
-            Log.Info("HyperScreenCapture - Startup completed");
+            Logger("HyperionScreenCapture - Startup completed", CommonLogLevel.Information);
 
             return true;
         }
@@ -193,22 +190,22 @@ namespace MP1_HyperionScreenCapture
                 if (on)
                 {
                     requestUrl = $"{ApiBaseUrl}?command=ON&force={force}";
-                    Log.Info($"HyperScreenCapture - Enabling capture [force = {force}]");
+                    Logger($"HyperionScreenCapture - Enabling capture [force = {force}]", CommonLogLevel.Information);
                 }
                 else
                 {
                     requestUrl = $"{ApiBaseUrl}?command=OFF&force={force}";
-                    Log.Info($"HyperScreenCapture - Disabling capture [force = {force}]");
+                    Logger($"HyperionScreenCapture - Disabling capture [force = {force}]", CommonLogLevel.Information);
                 }
 
-                Log.Debug($"HyperScreenCapture - toggle request URL: {requestUrl}");
+                Logger($"HyperionScreenCapture - toggle request URL: {requestUrl}", CommonLogLevel.Debug);
                 WebRequest request = WebRequest.Create(requestUrl);
                 request.Method = "GET";
                 request.GetResponse();
             }
             catch (Exception ex)
             {
-                Log.Error($"HyperScreenCapture - Error occured during ToggleHyperionScreenCapture(): {ex.Message}");
+                Logger($"HyperionScreenCapture - Error occured during ToggleHyperionScreenCapture(): {ex.Message}", CommonLogLevel.Error);
             }
         }
         private bool HyperionScreenCaptureEnabled()
@@ -227,14 +224,33 @@ namespace MP1_HyperionScreenCapture
                     bool.TryParse(responseText, out isEnabled);
                 }
 
-                Log.Debug($"HyperScreenCapture - capture is enabled = {requestUrl}");
+                Logger($"HyperionScreenCapture - capture is enabled = {isEnabled}", CommonLogLevel.Debug);
             }
             catch (Exception ex)
             {
-                Log.Error($"HyperScreenCapture - Error occured during HyperionScreenCaptureEnabled(): {ex.Message}");
+                Logger($"HyperionScreenCapture - Error occured during HyperionScreenCaptureEnabled(): {ex.Message}", CommonLogLevel.Error);
             }
 
             return isEnabled;
+        }
+
+        private void Logger(string message, CommonLogLevel logLevel)
+        {
+            switch (logLevel)
+            {
+                case CommonLogLevel.Debug:
+                    Log.Debug(message);
+                    break;
+                case CommonLogLevel.Error:
+                    Log.Error(message);
+                    break;
+                case CommonLogLevel.Information:
+                    Log.Info(message);
+                    break;
+                default:
+                    Log.Info(message);
+                    break;
+            }
         }
     }
 }
