@@ -15,6 +15,7 @@ namespace MP1_HyperionScreenCapture
     {
         // Variables
         public static string ApiBaseUrl = $"http://localhost:{Settings.ApiPort}/API";
+        public static bool StartedPlaybackCapture = false;
 
         // With GetID it will be an window-plugin / otherwise a process-plugin
         // Enter the id number here again
@@ -124,14 +125,21 @@ namespace MP1_HyperionScreenCapture
         /// <param name="filename">Media filename</param>
         private void g_Player_PlayBackStarted(g_Player.MediaType type, string filename)
         {
-            if (Settings.OnlyEnableWithMadVr &&
-                GUIGraphicsContext.VideoRenderer == GUIGraphicsContext.VideoRendererType.madVR)
+            if (type == g_Player.MediaType.Video || type == g_Player.MediaType.TV ||
+                type == g_Player.MediaType.Recording ||
+                type == g_Player.MediaType.Unknown || (type == g_Player.MediaType.Music && filename.Contains(".mkv")))
             {
-                ToggleHyperionScreenCapture(true);
-            }
-            else if (!Settings.OnlyEnableWithMadVr)
-            {
-                ToggleHyperionScreenCapture(true);
+                if (Settings.OnlyEnableWithMadVr &&
+                    GUIGraphicsContext.VideoRenderer == GUIGraphicsContext.VideoRendererType.madVR)
+                {
+                    StartedPlaybackCapture = true;
+                    ToggleHyperionScreenCapture(true);
+                }
+                else if (!Settings.OnlyEnableWithMadVr)
+                {
+                    StartedPlaybackCapture = true;
+                    ToggleHyperionScreenCapture(true);
+                }
             }
         }
 
@@ -142,14 +150,19 @@ namespace MP1_HyperionScreenCapture
         /// <param name="filename">Media filename.</param>
         private void g_Player_PlayBackEnded(g_Player.MediaType type, string filename)
         {
-            if (Settings.OnlyEnableWithMadVr &&
-                GUIGraphicsContext.VideoRenderer == GUIGraphicsContext.VideoRendererType.madVR)
+            if (StartedPlaybackCapture)
             {
-                ToggleHyperionScreenCapture(false);
-            }
-            else if (!Settings.OnlyEnableWithMadVr)
-            {
-                ToggleHyperionScreenCapture(false);
+                StartedPlaybackCapture = false;
+
+                if (Settings.OnlyEnableWithMadVr &&
+                    GUIGraphicsContext.VideoRenderer == GUIGraphicsContext.VideoRendererType.madVR)
+                {
+                    ToggleHyperionScreenCapture(false);
+                }
+                else if (!Settings.OnlyEnableWithMadVr)
+                {
+                    ToggleHyperionScreenCapture(false);
+                }
             }
         }
 
@@ -224,7 +237,7 @@ namespace MP1_HyperionScreenCapture
                     bool.TryParse(responseText, out isEnabled);
                 }
 
-                Logger($"HyperionScreenCapture - capture is enabled = {isEnabled}", CommonLogLevel.Debug);
+                Logger($"HyperionScreenCapture - capture enabled state = {isEnabled}", CommonLogLevel.Debug);
             }
             catch (Exception ex)
             {
